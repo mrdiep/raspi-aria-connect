@@ -1,12 +1,17 @@
-class refreshAction {
-    data = 1
-    middleware = async (dispatch, getState) => {
-        console.log('aaaa');
+export default class RefreshAction {
+    payload
+    constructor(payload) {
+        this.payload = payload;
     }
     
-    apply = (state) => {
+    middleware = () => async (dispatch, getState) => {
+        console.log('payload', this.payload);
+        dispatch({
+            type: 'RefreshAction',
+        })
+    }
+    
+    apply = (state, action) => {
         state.activeCounter = state.activeCounter + 1;
     }
 }
-
-export { refreshAction }; 

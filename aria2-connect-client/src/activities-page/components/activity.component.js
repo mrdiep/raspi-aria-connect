@@ -1,9 +1,16 @@
 import {connect} from 'react-redux';
 import React, { Component } from 'react'
+import mapDispatchToProps from '../actions/mapDispatchToProps';
 
 class Activity extends Component {
     render() {
-      return <h1>Counter = {this.props.counter}</h1>;
+      return (
+
+        <div>
+             <h1>Counter = {this.props.counter}</h1>
+             <button onClick={() => this.props.RefreshAction('payload')}>click to increase</button>
+        </div>
+      )
     }
 }
 
@@ -14,4 +21,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps)(Activity);
+export default connect(mapStateToProps, mapDispatchToProps)(Activity);
